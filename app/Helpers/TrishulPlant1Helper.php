@@ -25,7 +25,7 @@ class TrishulPlant1Helper {
 			$batch['batchNo'] = $dbBatch['Batch_No'];
 			$batch['batchDate'] = $dbBatch->Batch_Date->format('Y-m-d').$dbBatch->Batch_Time->format(' H:i:s');
 			$batch['productionQty'] = $dbBatch->transactions()->sum('Production_Qty');
-			$batch['customerName'] = $dbBatch->customer->Customer_Name;
+			$batch['customerName'] = $dbBatch->customer ? $dbBatch->customer->Customer_Name : 'NA';
 			$batch['vehicle'] = $dbBatch["Truck_No"];
 			$batch['grade'] = $dbBatch["Recipe_Name"];
 			$batch['agg1Target'] = $dbBatch["Gate1_Target"] ?: 0;

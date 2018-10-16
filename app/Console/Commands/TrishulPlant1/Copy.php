@@ -18,7 +18,7 @@ class Copy extends Command {
 	 *
 	 * @var string
 	 */
-	protected $description = 'Make CSVs';
+	protected $description = 'Make Copy';
 
 	/**
 	 * Execute the console command.
@@ -57,8 +57,7 @@ class Copy extends Command {
 	
 			$this->line($command);
 
-			// shell_exec($command);
-
+			shell_exec($command);
 
 			$command = "mysqlimport --delete --fields-optionally-enclosed-by='\"' --ignore-lines=1 --fields-terminated-by=, --local -u $dbUsername -p$dbPassword $dbDatabase ".storage_path("$suffix$file");
 
@@ -68,7 +67,7 @@ class Copy extends Command {
 
 			shell_exec($command);
 
-			// shell_exec("rm ".storage_path("$suffix$file"));
+			shell_exec("rm ".storage_path("$suffix$file"));
 
 			// die;
 		}

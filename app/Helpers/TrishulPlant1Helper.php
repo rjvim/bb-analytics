@@ -15,7 +15,6 @@ class TrishulPlant1Helper {
 		$dbBatches = TrishulPlant1BatchDatTrans::with('transactions','customer')
 										->where('Batch_Date','>=', $fromDate)
 										->where('Batch_Date','<=', $toDate)
-										->where('Batch_No',5003)
 										->get();
 
 		$batches = [];

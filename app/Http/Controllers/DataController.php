@@ -26,6 +26,8 @@ class DataController extends Controller
         {
             return TrishulPlant1Helper::get($request->get('fromDate'),$request->get('toDate'));
         }
+
+        return [];
         
     }
 }

@@ -61,8 +61,8 @@ class TrishulPlant1Helper {
 			$batch['additive2Target1'] = $dbBatch["Adm2_Target1"] ?: 0;
 			$batch['additive2Target2'] = $dbBatch["Adm2_Target2"] ?: 0;
 			$batch['waterTarget'] = $dbBatch["Water1_Target"] ?: 0;
-			$batch['waterTarget1'] = $dbBatch["Water1_Target"] ?: 0;
-			$batch['waterTarget2'] = $dbBatch["Water2_Target"] ?: 0;
+			// $batch['waterTarget1'] = $dbBatch["Water1_Target"] ?: 0;
+			// $batch['waterTarget2'] = $dbBatch["Water2_Target"] ?: 0;
 			$details = [];
 
 			foreach($dbBatch->transactions as $dbTransaction)

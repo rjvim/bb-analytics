@@ -39,7 +39,7 @@ class Copy extends Command {
 
 		foreach($files as $file)
 		{
-			$command = "mdb-export /home/forge/Wincc_batch.mdb $file > "..storage_path($suffix."$file.csv");
+			$command = "mdb-export /home/forge/Wincc_batch.mdb $file > ".storage_path($suffix"$file.csv");
 			$this->line($command);
 		}
 

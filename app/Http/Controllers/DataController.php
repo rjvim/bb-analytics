@@ -21,6 +21,11 @@ class DataController extends Controller
 
     public function get(Request $request)
     {
-         return TrishulPlant1Helper::get($request->get('fromDate'),$request->get('toDate'));
+
+        if($request->get('batchingPlantId') == 'TRISHUL1')
+        {
+            return TrishulPlant1Helper::get($request->get('fromDate'),$request->get('toDate'));
+        }
+        
     }
 }

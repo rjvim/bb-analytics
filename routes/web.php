@@ -11,7 +11,11 @@
 |
 */
 
-$router->get('/', [
+$router->get('/', function(){
+	return "Hey";
+});
+
+$router->get('batch-api', [
     'as' => 'data', 'uses' => 'DataController@get'
 ]);
 

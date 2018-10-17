@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        //
+        $schedule->command('bb:trishul_plant_1_copy')
+                 ->everyFiveMinutes();
     }
 }

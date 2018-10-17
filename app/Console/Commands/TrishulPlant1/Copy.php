@@ -90,6 +90,9 @@ class Copy extends Command {
 		DB::statement('ALTER TABLE `Trishul_Plant_1_Batch_Dat_Trans` CHANGE `Batch_Time` `Batch_Time` DATETIME  NULL;');
 		DB::statement('ALTER TABLE `Trishul_Plant_1_Batch_Transaction` CHANGE `Batch_Time` `Batch_Time` DATETIME  NULL;');
 
+		shell_exec("ssh forge@139.59.7.176 'php buildbuy.in/current/artisan bb:get_365_data'");
+
+
 	}
 
 }

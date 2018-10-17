@@ -41,6 +41,7 @@ class Copy extends Command {
 		{
 			$command = "mdb-export /home/forge/Wincc_batch.mdb $file > ".storage_path($suffix."$file.csv");
 			$this->line($command);
+			shell_exec($command);
 		}
 
 		return true;

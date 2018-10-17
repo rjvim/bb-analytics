@@ -44,10 +44,6 @@ class Copy extends Command {
 			shell_exec($command);
 		}
 
-		return true;
-		// shell_exec("mdb-export /home/forge/Wincc_batch.mdb Batch_Dat_Trans > Batch_Dat_Trans.csv");
-		// shell_exec("mdb-export /home/forge/Wincc_batch.mdb Batch_Transaction > Batch_Transaction.csv");
-
 		$files = [
 			'Batch_Dat_Trans.csv',
 			'Batch_Transaction.csv',
@@ -71,12 +67,6 @@ class Copy extends Command {
 		foreach($files as $file)
 		{
 			
-			$command = "scp $source$file ".storage_path("$suffix$file");
-	
-			$this->line($command);
-
-			shell_exec($command);
-
 			$command = "mysqlimport --delete --fields-optionally-enclosed-by='\"' --ignore-lines=1 --fields-terminated-by=, --local -u $dbUsername -p$dbPassword $dbDatabase ".storage_path("$suffix$file");
 
 			$this->line($command);

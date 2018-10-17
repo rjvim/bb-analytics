@@ -30,6 +30,23 @@ class Copy extends Command {
 		$source = 'root@139.59.59.181:/home/export/';
 		$suffix = 'logs/Trishul_Plant_1_';
 
+
+		$files = [
+			'Batch_Dat_Trans',
+			'Batch_Transaction',
+			'Customer_Master',
+		];
+
+		foreach($files as $file)
+		{
+			$command = "mdb-export /home/forge/Wincc_batch.mdb $file > "..storage_path($suffix."$file.csv");
+			$this->line($command);
+		}
+
+		return true;
+		// shell_exec("mdb-export /home/forge/Wincc_batch.mdb Batch_Dat_Trans > Batch_Dat_Trans.csv");
+		// shell_exec("mdb-export /home/forge/Wincc_batch.mdb Batch_Transaction > Batch_Transaction.csv");
+
 		$files = [
 			'Batch_Dat_Trans.csv',
 			'Batch_Transaction.csv',

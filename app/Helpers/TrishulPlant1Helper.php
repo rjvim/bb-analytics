@@ -15,9 +15,10 @@ class TrishulPlant1Helper {
 		$dbBatches = TrishulPlant1BatchDatTrans::with('transactions','customer')
 										->where('Batch_Date','>=', $fromDate)
 										->where('Batch_Date','<=', $toDate)
-										->whereHas('customer',function($query){
-											return $query->where('Customer_Name', 'LIKE', 'BB-%');
-										})
+										// ->whereHas('customer',function($query){
+										// 	return $query->where('Customer_Name', 'LIKE', 'BB-%');
+										// })
+										->orderBy('Batch_Date','asc')
 										->get();
 
 		$batches = [];

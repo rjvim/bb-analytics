@@ -7,20 +7,41 @@ use App\TrishulPlant1BatchDatTrans;
 class TrishulPlant1Helper {
 
 
-	public static function get($fromDate = null, $toDate = null)
+	public static function last5()
+	{
+		$dbBatches = TrishulPlant1BatchDatTrans::with('transactions','customer')
+										->orderBy('Batch_Date','desc')
+										->take(5)
+										->get();
+
+		return self::processBatches($dbBatches, false);
+	}
+
+	public static function get($fromDate = null, $toDate = null, $all = false)
 	{
 		// var_dump($fromDate); die;
 		// var_dump($toDate); die;
 
-		$dbBatches = TrishulPlant1BatchDatTrans::with('transactions','customer')
+		$dbBatchesBuilder = TrishulPlant1BatchDatTrans::with('transactions','customer')
 										->where('Batch_Date','>=', $fromDate)
-										->where('Batch_Date','<=', $toDate)
-										->whereHas('customer',function($query){
+										->where('Batch_Date','<=', $toDate);
+										
+
+		if(!$all)
+		{
+			$dbBatchesBuilder = $dbBatchesBuilder->whereHas('customer',function($query){
 											return $query->where('Customer_Name', 'LIKE', 'BB-%');
-										})
-										->orderBy('Batch_Date','asc')
+										});
+		}
+
+		$dbBatches = $dbBatchesBuilder->orderBy('Batch_Date','asc')
 										->get();
 
+		return self::processBatches($dbBatches);
+	}
+
+	public static function processBatches($dbBatches, $includeDetails = true)
+	{
 		$batches = [];
 
 		foreach($dbBatches as $dbBatch)
@@ -107,8 +128,11 @@ class TrishulPlant1Helper {
 				$details[] = $detail;
 			}
 
-
-			$batch['details'] = $details;
+			if($includeDetails)
+			{
+				$batch['details'] = $details;
+			}
+			
 			$batches[] = $batch;
 		}
 

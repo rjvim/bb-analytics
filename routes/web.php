@@ -19,3 +19,7 @@ $router->get('batch-api', [
     'as' => 'data', 'uses' => 'DataController@get'
 ]);
 
+$router->get('last-5-batches', [
+    'as' => 'data', 'uses' => 'DataController@last5'
+]);
+

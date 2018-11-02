@@ -34,8 +34,10 @@ class TrishulPlant1Helper {
 										});
 		}
 
-		$dbBatches = $dbBatchesBuilder->orderBy('Batch_Date','asc')
-										->get();
+		$dbBatches = $dbBatchesBuilder
+							->orderBy('Batch_Date','asc')
+							->orderBy('Batch_Time','asc')
+							->get();
 
 		return self::processBatches($dbBatches);
 	}

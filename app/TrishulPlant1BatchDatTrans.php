@@ -15,8 +15,7 @@ class TrishulPlant1BatchDatTrans extends Model
     public function transactions()
     {
         return $this
-                ->hasMany(TrishulPlant1BatchTransaction::class, 'Batch_No', 'Batch_No')
-                ->where('Batch_Date',$this->Batch_Date);
+                ->hasMany(TrishulPlant1BatchTransaction::class, 'Batch_No', 'Batch_No');
     }
 
     public function customer()

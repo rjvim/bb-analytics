@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\TrishulPlant1\MakeCSVs::class,
-        Commands\TrishulPlant1\Copy::class
+        Commands\TrishulPlant1\Copy::class,
+        Commands\SBMS1\Copy::class,
     ];
 
     /**
@@ -27,5 +28,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('bb:trishul_plant_1_copy')
                  ->everyFiveMinutes();
+
+        $schedule->command('bb:sbms1_copy')
+             ->everyFiveMinutes();
     }
 }

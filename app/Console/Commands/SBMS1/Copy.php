@@ -56,21 +56,21 @@ class Copy extends Command {
 		DB::table('SBMS1_Batch_Dat_Trans')->truncate();
 		DB::table('SBMS1_Batch_Transaction')->truncate();
 
-		foreach($files as $file)
-		{
-			
-			$command = "mysqlimport --ignore-lines=1 --fields-terminated-by=, --local -u $dbUsername -p$dbPassword $dbDatabase "."$localPathPrefix$file";
+		/**
+			"mysqlimport --delete --fields-optionally-enclosed-by='\"' --ignore-lines=1 --fields-terminated-by=, --local -u $dbUsername -p$dbPassword $dbDatabase "."$localPathPrefix$file";
+		**/
 
-			$this->line($command);
+		$file = 'SBMS1_Batch_Dat_Trans.csv';
+		$command = "mysqlimport --ignore-lines=1 --fields-terminated-by=, --local -u $dbUsername -p$dbPassword $dbDatabase "."$localPathPrefix$file";
 
-			// var_dump($command); die;
+		$this->line($command);
+		shell_exec($command);
 
-			shell_exec($command);
+		$file = 'SBMS1_Batch_Transaction.csv';
+		$command = "mysqlimport --ignore-lines=1 --fields-terminated-by=, --local -u $dbUsername -p$dbPassword $dbDatabase "."$localPathPrefix$file";
 
-			// shell_exec("rm ".storage_path("$suffix$file"));
-
-			// die;
-		}
+		$this->line($command);
+		shell_exec($command);
 
 
 		$command = "rm $localPathPrefix"."SBMS1_Batch_Dat_Trans.csv";

@@ -59,7 +59,7 @@ class Copy extends Command {
 		foreach($files as $file)
 		{
 			
-			$command = "mysqlimport --delete --fields-optionally-enclosed-by='\"' --ignore-lines=1 --fields-terminated-by=, --local -u $dbUsername -p$dbPassword $dbDatabase "."$localPathPrefix$file";
+			$command = "mysqlimport --ignore-lines=1 --fields-terminated-by=, --local -u $dbUsername -p$dbPassword $dbDatabase "."$localPathPrefix$file";
 
 			$this->line($command);
 

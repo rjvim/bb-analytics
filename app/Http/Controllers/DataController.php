@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Helpers\TrishulPlant1Helper;
 use App\Helpers\SBMS1Helper;
+use App\Helpers\TRUEMIX1Helper;
 
 class DataController extends Controller
 {
@@ -33,6 +34,11 @@ class DataController extends Controller
             return SBMS1Helper::get($request->get('fromDate'),$request->get('toDate'),$request->get('all',false));
         }
 
+        if($request->get('batchingPlantId') == 'TRUEMIX1')
+        {
+            return TRUEMIX1Helper::get($request->get('fromDate'),$request->get('toDate'),$request->get('all',false));
+        }
+
         return [];
         
     }
@@ -48,6 +54,11 @@ class DataController extends Controller
         if($request->get('batchingPlantId') == 'SBMS1')
         {
             return SBMS1Helper::last5();
+        }
+
+        if($request->get('batchingPlantId') == 'TRUEMIX1')
+        {
+            return TRUEMIX1Helper::last5();
         }
 
         return [];

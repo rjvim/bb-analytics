@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         Commands\TrishulPlant1\MakeCSVs::class,
         Commands\TrishulPlant1\Copy::class,
         Commands\SBMS1\Copy::class,
+        Commands\TRUEMIX1\Copy::class,
     ];
 
     /**
@@ -31,5 +32,8 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('bb:sbms1_copy')
              ->everyFiveMinutes();
+
+        // $schedule->command('bb:truemix1_copy')
+        //      ->everyFiveMinutes();
     }
 }

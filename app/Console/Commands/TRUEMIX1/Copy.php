@@ -27,7 +27,7 @@ class Copy extends Command {
 	 */
 	public function handle()
 	{
-		$localPathPrefix = "/home/forge/TRUEMIX1/";
+		$localPathPrefix = "/home/forge/TRUEMIX/";
 		// $localPathPrefix = "/Users/rajiv/Desktop/";
 
 		$command = "sed -i -e 's/Adm2_Target2 /Adm2_Target2/g' $localPathPrefix"."Batch_Dat_Trans.csv";
@@ -39,7 +39,7 @@ class Copy extends Command {
 		$this->line($command);
 		shell_exec($command);
 
-		$command = "ln -sf $localPathPrefix"."Batch_Transaction.csv $localPathPrefix"."TRUEMIX1_Batch_Transaction.csv";
+		$command = "ln -sf $localPathPrefix"."Batch_Transactions.csv $localPathPrefix"."TRUEMIX1_Batch_Transaction.csv";
 
 		$this->line($command);
 		shell_exec($command);

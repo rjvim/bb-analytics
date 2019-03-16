@@ -33,7 +33,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('bb:sbms1_copy')
              ->everyFiveMinutes();
 
-        // $schedule->command('bb:truemix1_copy')
-        //      ->everyFiveMinutes();
+        $schedule->command('bb:truemix1_copy')
+             ->everyFiveMinutes();
     }
 }

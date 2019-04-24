@@ -55,7 +55,7 @@ class TRUEMIX1Helper {
 			$batch['batchDate'] = $dbBatch->Batch_Date->format('Y-m-d H:i:s');
 			$batch['productionQty'] = $dbBatch->transactions()->sum('Production_Qty');
 			$batch['customerName'] = $dbBatch->Customer_Code;
-			$batch['vehicle'] = 'NA';
+			$batch['vehicle'] = $dbBatch["Truck_No"];
 			$batch['grade'] = $dbBatch["Recipe_Name"];
 			$batch['agg1Target'] = $dbBatch["Gate1_Target"] ?: 0;
 			$batch['agg2Target'] = $dbBatch["Gate2_Target"] ?: 0;
